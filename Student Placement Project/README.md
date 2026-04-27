@@ -3,6 +3,31 @@ Student-Project
 
 A short description of the project.
 
+CI/CD
+------------
+
+This project includes a GitHub Actions workflow for continuous integration
+and continuous deployment:
+
+- CI runs on pull requests and pushes to main/master.
+- CI validates linting and Python runtime compatibility.
+- CD runs when a tag beginning with v is pushed, builds a package,
+  uploads the artifact, and publishes to PyPI when credentials are set.
+
+Workflow file:
+
+- .github/workflows/ci-cd.yml
+
+To enable PyPI deployment, add this repository secret in GitHub:
+
+- PYPI_API_TOKEN
+
+Example release flow:
+
+1. Create and push a version tag like v0.1.1.
+2. GitHub Actions runs CI then CD.
+3. If PYPI_API_TOKEN is present, the package is published to PyPI.
+
 Project Organization
 ------------
 

@@ -1,6 +1,8 @@
 Student-Project
 ==============================
 
+[![CI Pipeline](https://github.com/Edureka-AI/Student-Placement-Prediction/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/Edureka-AI/Student-Placement-Prediction/actions/workflows/ci-cd.yml)
+
 A short description of the project.
 
 CI/CD
@@ -17,6 +19,9 @@ and continuous deployment:
 Workflow file:
 
 - .github/workflows/ci-cd.yml
+- GitHub repository: https://github.com/Edureka-AI/Student-Placement-Prediction
+- GitHub Actions page: https://github.com/Edureka-AI/Student-Placement-Prediction/actions
+- Run workflow page: https://github.com/Edureka-AI/Student-Placement-Prediction/actions/new
 
 To enable PyPI deployment, add this repository secret in GitHub:
 
@@ -27,6 +32,17 @@ Example release flow:
 1. Create and push a version tag like v0.1.1.
 2. GitHub Actions runs CI then CD.
 3. If PYPI_API_TOKEN is present, the package is published to PyPI.
+
+To check the running status, open the GitHub Actions page and select
+the latest CI Pipeline run. If you open a pull request, the same status also
+appears in the PR checks panel.
+
+GitHub setup:
+
+1. Create a GitHub repository.
+2. Add the GitHub remote to this project.
+3. Push the `master` branch so the workflow file exists on GitHub.
+4. Open the repository's Actions tab to see the CI run status.
 
 Project Organization
 ------------

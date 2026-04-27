@@ -31,4 +31,6 @@ def predict(features_dict: dict) -> object:
     frame = pd.DataFrame([features_dict])
     model = load_model()
     prediction = model.predict(frame)
-    return prediction[0].item() if hasattr(prediction[0], "item") else prediction[0]
+    if hasattr(prediction[0], "item"):
+        return prediction[0].item()
+    return prediction[0]

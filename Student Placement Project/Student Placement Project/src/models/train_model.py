@@ -1,4 +1,4 @@
-""" Updating the model script for the student placement prediction project for MLFlow tracking ."""
+"""Train model for student placement and track runs with MLflow."""
 
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
@@ -15,7 +15,9 @@ def train():
     project_root = Path(__file__).resolve().parents[2]
 
     # Load dataset
-    df = pd.read_csv(project_root / "data" / "raw" / "student_placement_data.csv")
+    df = pd.read_csv(
+        project_root / "data" / "raw" / "student_placement_data.csv"
+    )
 
     # Features and target
     X = df.drop("Placement", axis=1)
@@ -64,7 +66,10 @@ def train():
         # Log model artifact in MLflow
         mlflow.sklearn.log_model(model, "model")
 
-        print(f"Model trained on student placement dataset! Accuracy: {accuracy}")
+        print(
+            "Model trained on student placement dataset! "
+            f"Accuracy: {accuracy}"
+        )
 
 
 if __name__ == "__main__":

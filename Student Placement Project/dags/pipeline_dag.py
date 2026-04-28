@@ -4,8 +4,18 @@ from datetime import datetime
 import sys
 import os
 
-# Add project path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+# Add project path (supports both root and nested project layouts)
+current_dir = os.path.dirname(__file__)
+candidate_roots = [
+    os.path.abspath(os.path.join(current_dir, "..")),
+    os.path.abspath(os.path.join(current_dir, "..", "Student Placement Project")),
+]
+
+for root in candidate_roots:
+    if os.path.isdir(os.path.join(root, "src")):
+        if root not in sys.path:
+            sys.path.append(root)
+        break
 
 from src.data_preprocessing import preprocess_data
 from src.train_model import train

@@ -14,12 +14,15 @@ logging.basicConfig(
     level=logging.INFO
 )
 
+
 class InputData(BaseModel):
     data: dict
+
 
 @app.get("/")
 def home():
     return {"message": "ML API running"}
+
 
 @app.post("/predict")
 def get_prediction(input: InputData):

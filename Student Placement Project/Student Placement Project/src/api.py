@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from src.models.predict_model import predict
 import logging
+
 import os
 
 app = FastAPI()

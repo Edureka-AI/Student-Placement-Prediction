@@ -1,0 +1,23 @@
+artifact_path: file:C:/Users/Edureka/Desktop/Student Placement Project/mlruns/1/models/m-f5d75ed25b6c4cee8343fe4c64330c0a/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.14.3
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+mlflow_version: 3.11.1
+model_id: m-f5d75ed25b6c4cee8343fe4c64330c0a
+model_size_bytes: 181595
+model_uuid: m-f5d75ed25b6c4cee8343fe4c64330c0a
+prompts: null
+run_id: 0cca0d63c6914dc4ad13ea81a96430d5
+utc_time_created: '2026-04-28 11:01:14.305052'

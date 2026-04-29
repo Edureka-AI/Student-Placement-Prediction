@@ -2,3 +2,8 @@ pandas
 scikit-learn
 mlflow
 joblib
+fastapi
+uvicorn[standard]
+pydantic
+python-dotenv
+click

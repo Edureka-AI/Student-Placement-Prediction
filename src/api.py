@@ -1,11 +1,18 @@
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
-from src.models.predict_model import predict
+from pathlib import Path
 import logging
-
 import os
 
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
+from src.models.predict_model import predict
+
 app = FastAPI()
+
+BASE_DIR = Path(__file__).resolve().parent
+FRONTEND_DIR = BASE_DIR / "frontend"
+STATIC_DIR = FRONTEND_DIR / "static"
 
 # Create logs folder
 os.makedirs("logs", exist_ok=True)
@@ -15,6 +22,9 @@ logging.basicConfig(
     level=logging.INFO
 )
 
+if STATIC_DIR.exists():
+    app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
+
 
 class InputData(BaseModel):
     data: dict
@@ -22,6 +32,14 @@ class InputData(BaseModel):
 
 @app.get("/")
 def home():
+    index_file = FRONTEND_DIR / "index.html"
+    if not index_file.exists():
+        raise HTTPException(status_code=404, detail="Frontend index.html not found")
+    return FileResponse(index_file)
+
+
+@app.get("/health")
+def health_check():
     return {"message": "ML API running"}
 
 

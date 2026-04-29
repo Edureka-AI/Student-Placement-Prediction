@@ -29,14 +29,9 @@ if STATIC_DIR.exists():
 class InputData(BaseModel):
     data: dict
 
-
 @app.get("/")
-def home():
-    index_file = FRONTEND_DIR / "index.html"
-    if not index_file.exists():
-        raise HTTPException(status_code=404, detail="Frontend index.html not found")
-    return FileResponse(index_file)
-
+def serve_ui():
+    return FileResponse("src/frontend/index.html")
 
 @app.get("/health")
 def health_check():
